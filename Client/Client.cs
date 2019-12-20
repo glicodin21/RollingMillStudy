@@ -103,26 +103,21 @@ namespace Client
         private void btnTolsh_Click(object sender, EventArgs e)
         {
             double aDouble, bDouble;
+            aDouble = Convert.ToDouble(DepthBoxTxt.Text); // Запись данных о толщине
+            bDouble = Convert.ToDouble(SourceDepthBoxTxt.Text); // Запись данных о исходной толщине
             try
             {
                 Thread t1 = new Thread(delegate ()
                 {
-                    aDouble = Convert.ToDouble(DepthBoxTxt.Text); // Запись данных о толщине
+                    
                     String aString = "a" + Convert.ToString(aDouble); // Добавление префикса сообщению о толщине
-                    bDouble = Convert.ToDouble(SourceDepthBoxTxt.Text); // Запись данных о исходной толщине
                     String bString = "b" + Convert.ToString(bDouble); // Добавление префикса сообщению об исходной толщине
-                    lock (locker)
-                    {
-                        byte[] data = System.Text.Encoding.UTF8.GetBytes(aString); // Создания массива байт на основе сообщения
-                        client.Write(data); // Отправка данных на сервер
-                        Thread.Sleep(100);
-                    }
-                    lock (locker)
-                    {
-                        byte[] data2 = System.Text.Encoding.UTF8.GetBytes(bString); // Создания массива байт на основе сообщения
-                        client.Write(data2); // Отправка данных на сервер
-                        Thread.Sleep(100);
-                    }
+                    byte[] data = System.Text.Encoding.UTF8.GetBytes(aString); // Создания массива байт на основе сообщения
+                    client.Write(data); // Отправка данных на сервер
+                    Thread.Sleep(100);
+                    byte[] data2 = System.Text.Encoding.UTF8.GetBytes(bString); // Создания массива байт на основе сообщения
+                    client.Write(data2); // Отправка данных на сервер
+                    Thread.Sleep(100);
                 });
                 t1.Start();
                 StatusTxt.Text += "\r\nДанные толщины отправлены";
