@@ -10,7 +10,7 @@ namespace Client
     {
         public string aString;
         public string bString;
-        public bool Exit;ыфв
+        public bool Exit;
     }
 
     public partial class Client : Form
