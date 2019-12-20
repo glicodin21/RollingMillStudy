@@ -136,7 +136,7 @@ namespace Server
                             {
                                 server.BroadcastLine(adata.EX1); // Отправка результатов математических преобразований с сервера на клиент
                             }
-                            catch (System.IO.IOException)
+                            catch (Exception)
                             {
                                 return;
                             }

@@ -177,7 +177,21 @@ namespace Client
                         {
                             MSG = adata.aString;
                         }
-                        GraphForm.Value(MSG); // Передача данных на график
+                        try
+                        {
+                            if (adata.Exit != true)
+                            {
+                                this.Invoke((MethodInvoker)delegate
+                                {
+                                    GraphForm.Value(MSG); // Передача данных на график
+                                });
+                            }
+                            else break;
+                        }
+                        catch (Exception)
+                        {
+                            break;
+                        }
                     }
                     else Thread.CurrentThread.Abort();
                 }
