@@ -62,7 +62,7 @@ namespace Client
             pane.Title.Text = "График регулирования скорости";
             // Выводим названия осей
             pane.XAxis.Title.Text = "Время, с";
-            pane.YAxis.Title.Text = "Скорость, рад/c";
+            pane.YAxis.Title.Text = "Скорость, м/c";
             // Добавим кривую пока еще без каких-либо точек
             LineItem myCurve = pane.AddCurve("График", _data, Color.Blue, SymbolType.None);
             // Вызываем метод AxisChange(), чтобы обновить данные об осях
